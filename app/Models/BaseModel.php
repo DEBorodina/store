@@ -46,9 +46,9 @@ class BaseModel
          * @var mysqli $connection
          */
         $connection = self::getConnection();
-        $smth = $connection->prepare("SELECT * FROM ? where id = ?");
-        $table_name = static::getTableName();
-        $smth->bind_param('si',$table_name,$id);
+        $sql = "select * from ".(static::getTableName())." where id = ?";
+        $smth = $connection->prepare($sql);
+        $smth->bind_param('i',$id);
         $res = $smth->execute();
         $res = $smth->get_result();
         print_r($res->fetch_assoc());

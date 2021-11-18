@@ -12,8 +12,11 @@ class CatalogController
     }
     public function showProduct()
     {
+        $allProducts = Product::selectAll();
         $product = Product::findById($_GET['id']);
-        print_r($product);
-        render('product.php');
+        render('product.php',[
+            'product'=>$product,
+            'productsList'=>$allProducts,
+        ]);
     }
 }

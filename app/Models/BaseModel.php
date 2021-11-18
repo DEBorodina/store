@@ -30,15 +30,15 @@ class BaseModel
         return $tableName;
     }
 
-    public static function selectAll() {
+    public static function selectAll() :array {
         $connection = self::getConnection();
-        $tableName = static::getTableName();
+        $tableName =static::getTableName();
         $res = $connection->query("SELECT * FROM ".$tableName);
         $arr = [];
         while ($row = $res->fetch_object(static::class)) {
             $arr[] = $row;
         }
-        return debug($arr);
+        return $arr;
     }
 
     public static function findById($id){

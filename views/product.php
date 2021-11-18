@@ -38,6 +38,9 @@
 <body>
 <!-- HEADER -->
 <header>
+    <h1><?php print_r($product)?></h1>
+    <h1>List:</h1>
+    <h1><?php print_r($productsList)?></h1>
     <!-- TOP HEADER -->
     <div id="top-header">
         <div class="container">

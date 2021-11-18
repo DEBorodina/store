@@ -6,18 +6,13 @@ use mysqli;
 
 class BaseModel
 {
-    protected static function debug($num) {
-        echo "<pre>";
-        var_dump($num);
-        echo "</pre>";
-    }
 
     protected static $tableName;
     protected static $connection;
 
     protected static function getConnection() {
         if (!self::$connection) {
-            self::$connection = new mysqli('localhost', 'root', 'root', 'electro');
+            self::$connection = new mysqli('localhost', 'root', '', 'mvc');
         }
         return self::$connection;
     }
@@ -46,4 +41,16 @@ class BaseModel
         return debug($arr);
     }
 
+    public static function findById($id){
+        /**
+         * @var mysqli $connection
+         */
+        $connection = self::getConnection();
+        $smth = $connection->prepare("SELECT * FROM ? where id = ?");
+        $table_name = static::getTableName();
+        $smth->bind_param('si',$table_name,$id);
+        $res = $smth->execute();
+        $res = $smth->get_result();
+        print_r($res->fetch_assoc());
+    }
 }

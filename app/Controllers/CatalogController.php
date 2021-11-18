@@ -6,10 +6,10 @@ class CatalogController
 {
     public function index()
     {
-        include __DIR__.'/../../views/catalog.php';
+        render('catalog.php');
     }
     public function showProduct()
     {
-        include __DIR__.'/../../views/product.php';
+        render('product.php');
     }
 }

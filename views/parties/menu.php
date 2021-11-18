@@ -1,0 +1,25 @@
+<?php
+$menu=[
+        ['name'=>'home','link'=>'/'],
+        ['name'=>'catalog','link'=>'/catalog'],
+]
+?>
+<!-- NAVIGATION -->
+<nav id="navigation">
+    <!-- container -->
+    <div class="container">
+        <!-- responsive-nav -->
+        <div id="responsive-nav">
+            <!-- NAV -->
+            <ul class="main-nav nav navbar-nav">
+                <?php foreach ($menu as $item):?>
+                <li><a href="<?= $item['link'] ?>"><?= $item['name'] ?></a></li>
+                <?php endforeach;?>
+            </ul>
+            <!-- /NAV -->
+        </div>
+        <!-- /responsive-nav -->
+    </div>
+    <!-- /container -->
+</nav>
+<!-- /NAVIGATION -->

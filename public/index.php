@@ -1,5 +1,6 @@
 <?php
 include '../vendor/autoload.php';
+include '../app/core.php';
 $routes = [
     '/' => 'App\\Controllers\\SiteController@index',
     '/catalog' => 'App\\Controllers\\CatalogController@index',

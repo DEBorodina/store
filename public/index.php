@@ -4,11 +4,13 @@ include '../app/core.php';
 $routes = [
     '/' => 'App\\Controllers\\SiteController@index',
     '/catalog' => 'App\\Controllers\\CatalogController@index',
-    '/catalog/12' => 'App\\Controllers\\CatalogController@showProduct'
+    '/product' => 'App\\Controllers\\CatalogController@showProduct'
 ];
 $runAction = 'App\\Controllers\\SiteController@notFound';
+$uri = explode('?',$_SERVER['REQUEST_URI']);
+$uri = $uri[0];
 foreach ($routes as $route => $action) {
-    if ($_SERVER['REQUEST_URI'] == $route) {
+    if ($uri == $route) {
         $runAction = $action;
         break;
     }

@@ -8,7 +8,6 @@ class SiteController
 {
     public function index()
     {
-        Product::findById(2);
         render('main.php');
     }
 

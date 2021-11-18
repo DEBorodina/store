@@ -51,6 +51,6 @@ class BaseModel
         $smth->bind_param('i',$id);
         $res = $smth->execute();
         $res = $smth->get_result();
-        print_r($res->fetch_assoc());
+        return $res->fetch_assoc();
     }
 }

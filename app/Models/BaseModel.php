@@ -6,7 +6,7 @@ use mysqli;
 
 class BaseModel
 {
-
+    protected static $fillable = [];
     protected static $tableName;
     protected static $connection;
 
@@ -52,5 +52,28 @@ class BaseModel
         $res = $smth->execute();
         $res = $smth->get_result();
         return $res->fetch_assoc();
+    }
+
+    public function save(){
+        $connection = self::getConnection();
+        $tableName = static::getTableName();
+        $fields = implode(' , ', static::$fillable);
+        $values = [];
+
+        if(isset($this->id) && !empty($this->id)){
+            //update
+        }
+
+        foreach (static::$fillable as $attributeName){
+            $values [] = $this->{$attributeName}??NULL;
+        }
+        $values = "'".implode("' , '", $values)."'";
+        print_r($values);
+        $sql="INSERT INTO {$tableName} ({$fields}) VALUES ({$values})";
+        $connection->query($sql);
+        if($connection->insert_id){
+            $this->id =$connection->insert_id;
+        }
+        print_r($connection->insert_id);
     }
 }

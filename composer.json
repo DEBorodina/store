@@ -1,5 +1,5 @@
 {
-    "name": "user/php1",
+    "name": "DEBorodina/store",
     "type": "project",
     "autoload": {
         "psr-4": {
